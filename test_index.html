@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Index</title>
+
+    <script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+    <script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"> </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class Table extends React.Component {
+
+            constructor() {
+                super();
+                this.state = { toDoItem: "" }
+            }
+    
+            handleChange(event) {
+                this.setState({ toDoItem: event.target.value })
+            }
+            
+            render(){
+                return(                                                                                
+                    <div>                        
+                        <header style={{backgroundColor: "red"}}>
+                            <h1 style={{textAlign: "center", color: "white"}}>Task Tracker</h1>
+                        </header>
+                        
+                        <div className="inputting">
+                            <form action="http://localhost:3000/taskAdded" method="POST">
+                                <input style={{marginRight: "8px"}} type="text" name='task' placeholder="Enter task" />
+                                <input style={{marginRight: "8px"}} type="text" name='dueday' placeholder="Enter Due Day" />
+                                <button style={{
+                                                                        
+                                    
+                                    background: "green",
+                                    borderRadius: "999px",
+                                    boxShadow: "#5E5DF0 0 10px 20px -10px",
+                                    boxSizing: "border-box",
+                                    color: "#FFFFFF",
+                                    cursor: "pointer",                                      
+                                    fontSize: "16px",
+                                    fontWeight: "70",                                      
+                                    opacity: "1",
+                                    outline: "0 solid transparent",
+                                    padding: "8px 8px",
+                                  }} type='submit'>Add Task</button>                        
+                            </form>
+                        </div>     
+                        <br />
+                        <div className="viewing">
+                            <form action="http://localhost:3000/seeTasks.html">
+                                <button style={{
+                                                                        
+                                    
+                                    background: "blue",
+                                    borderRadius: "999px",
+                                    boxShadow: "#5E5DF0 0 10px 20px -10px",
+                                    boxSizing: "border-box",
+                                    color: "#FFFFFF",
+                                    cursor: "pointer",                                      
+                                    fontSize: "16px",
+                                    fontWeight: "70",                                      
+                                    opacity: "1",
+                                    outline: "0 solid transparent",
+                                    padding: "8px 8px",
+                                  }} type='submit'> See all tasks </button>
+                            </form>
+                        </div>
+                        <br />
+                        <div className="deleting">
+                            <form action="http://localhost:3000/deleteTask" method="POST">
+                                <input style={{marginRight: "8px"}} type="text" name='task' placeholder="Enter task to be deleted"/>
+                                
+                                <button style={{
+                                                                        
+                                    
+                                      background: "red",
+                                      borderRadius: "999px",
+                                      boxShadow: "#5E5DF0 0 10px 20px -10px",
+                                      boxSizing: "border-box",
+                                      color: "#FFFFFF",
+                                      cursor: "pointer",                                      
+                                      fontSize: "16px",
+                                      fontWeight: "70",                                      
+                                      opacity: "1",
+                                      outline: "0 solid transparent",
+                                      padding: "8px 8px",
+                                    }} type="submit">Delete Task</button>
+                            </form>
+                        </div>                        
+                    </div>         
+                               
+                );
+            }            
+        }
+        ReactDOM.render(<Table />, document.getElementById('root'))
+    </script>
+    
+
+
+</body>
+</html>
+
+
